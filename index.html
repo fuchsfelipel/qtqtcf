@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Converter QT para QTcF</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Calculadora de QT<sub>cF</sub></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="bg-light p-5 rounded">
+            <h1>Calculadora de valor QT<sub>cF</sub> </h1>
+            <p class="lead">Este é uma página simples que calcula o valor QT<sub>cF</sub> à partir dos valores QT e RR
+                utilizando a fórmula abaixo:</p>
+            <p style="font-size: 2em; text-align: center;">QT<sub>cF</sub> = <sup>QT</sup>&#8260<sub>&#8731;RR</sub></p>
+
+            <br />
+            <!-- Valor QT -->
+            <form id="inputform" onsubmit="calculateQTCF();return false">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Valor QT" aria-label="val_qt_lbl" id="val_qt">
+                    <span class="input-group-text" id="val_qt_lbl">msec</span>
+                </div>
+
+                <!-- Valor RR -->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Valor RR" aria-label="val_rr_lbl" id="val_rr">
+                    <span class="input-group-text" id="val_rr_lbl">segundos</span>
+                </div>
+
+                <!-- Calcular! -->
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Calcular!</button>
+                </div>
+            </form>
+
+            <div id="qtcr_response"></div>
+
+        </div>
+    </div>
+    <footer class="footer mt-auto py-3 bg-light" style="position: fixed; bottom: 0; width: 100%; text-align: center;">
+        <div class="container">
+          <span class="text-muted">Criado por Felipe L. Fuchs. Veja o meu perfil e entre em contato através do <a href="https://github.com/fuchsfelipel">GitHub</a> ou do <a href="https://linkedin.com/in/fuchsfelipel">LinkedIn</a></span>
+        </div>
+      </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+
+    <script>
+        function calculateQTCF() {
+            var qtvalue = parseFloat(document.getElementById("val_qt").value);
+            var rrvalue = parseFloat(document.getElementById("val_rr").value);
+
+            console.log("Received");
+            var qtcfvalue = qtvalue / Math.cbrt(rrvalue);
+            document.getElementById("qtcr_response").innerHTML += '<div class="alert alert-success" role="alert">O valor QT<sub>cF</sub> é <strong>' + qtcfvalue + '</strong></div>';
+
+        };
+    </script>
+</body>
+
+</html>
