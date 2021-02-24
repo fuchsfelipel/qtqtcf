@@ -29,7 +29,7 @@
             <form id="inputform" onsubmit="calculateQTCF();return false">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Valor QT" aria-label="val_qt_lbl" id="val_qt">
-                    <span class="input-group-text" id="val_qt_lbl">msec</span>
+                    <span class="input-group-text" id="val_qt_lbl">segundos</span>
                 </div>
 
                 <!-- Valor RR -->
@@ -59,7 +59,7 @@
 
     <script>
         function calculateQTCF() {
-            var qtvalue = parseFloat(document.getElementById("val_qt").value);
+            var qtvalue = parseFloat(document.getElementById("val_qt").value)/1000;
             var rrvalue = parseFloat(document.getElementById("val_rr").value);
 
             console.log("Received");
